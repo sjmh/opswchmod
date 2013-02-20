@@ -46,18 +46,15 @@ options:
 
 3. Set permissions on a folder, recursively
 
-    `./opswchmod.py --perm wx -r johndoe -f '/Customers/ACME/Scripts' \ 
-    --recurse -u admin`
+    `./opswchmod.py --perm wx -r johndoe -f '/Customers/ACME/Scripts' --recurse -u admin`
 
 4. Set permissions on a folder for all groups starting with 'ACME-SYS'
 
-    `./opswchmod.py --perm wxe -r ACME-SYS -f '/Customers/ACME/Policies' \
-    -u admin`
+    `./opswchmod.py --perm wxe -r ACME-SYS -f '/Customers/ACME/Policies' -u admin`
 
 5. Remove all permissions on folders for the ACME-SYSOPS group
 
-    `./opswchmod.py --perm 0 -r ACME-SYSOPS -f '/Customers/ACME/Policies' \
-    -u admin`
+    `./opswchmod.py --perm 0 -r ACME-SYSOPS -f '/Customers/ACME/Policies' -u admin`
 
 
 Permission Syntax
