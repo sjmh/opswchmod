@@ -3,7 +3,6 @@
 import sys
 sys.path.append("/opt/opsware/pylibs2")
 
-import pdb
 from pytwist import *
 from getpass import getpass
 from optparse import OptionParser
@@ -47,7 +46,7 @@ class FolderTransaction(object):
     def set_role(self, role):
         filter = Filter()
         filter.expression = 'UserRoleVO.rolename =* %s' % role
-        self.roles = self.ts.fido.UserRoleService.findUserRoleRefs(filter)
+        self.roles += self.ts.fido.UserRoleService.findUserRoleRefs(filter)
         if len(self.roles) == 0:
             raise NoSuchRole, role
 
@@ -115,23 +114,25 @@ def print_acls(folder, acls):
         
 def print_permhelp():
     perm_help = """
-HP SA Permission Help
-=====================
+Permission Syntax
+---------------------
 
 You can specify a combination of {L,R,W,X,E} or 0
 
-L   = LIST
-R   = READ
-W   = WRITE
-X   = EXECUTE
-E   = EDIT FOLDER PERMISSIONS
-0   = DELETE ALL PERMISSIONS
+Attribute | Permission              |
+----------|-------------------------|
+    L     | LIST                    |
+    R     | READ                    |
+    W     | WRITE                   |
+    X     | EXECUTE                 |
+    E     | EDIT FOLDER PERMISSIONS | 
+    0     | DELETE ALL PERMISSIONS  |
 
 Any permission, other than LIST and 0, will also apply LIST.  If you specify
 WRITE, this also applies READ, as well as LIST.
 
 0 is exclusive and should not be combined with any other permissions.  It will
-override any other permissions specified on the command line.  It's purpose is
+override any other permissions specified on the command line.  Its purpose is
 to provide a mechanism for removing permissions for a role from a folder.
 
 EXECUTE, EDIT FOLDER and WRITE can all be specified, but never apply 

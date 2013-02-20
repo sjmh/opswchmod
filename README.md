@@ -8,6 +8,10 @@ but allows you to specify multiple roles in one invocation.
 This utility is intended to be used on an SA core, although a few
 simple modifications can enable it to run on any managed agent.
 
+The tool provides options to push privileges recursively.  It *always* assumes
+that you want to propagate 'LIST' up.  If that turns out not to be the case, then
+someone can file an enhancement request. :)
+
 Command Syntax
 ---------------------
 
@@ -52,7 +56,11 @@ options:
 
     `./opswchmod.py --perm wxe -r ACME-SYS -f '/Customers/ACME/Policies' -u admin`
 
-5. Remove all permissions on folders for the ACME-SYSOPS group
+5. Set permissions for group ACME-SYSADMIN and ACME-AUDITORS
+
+    `./opswchmod.py --perm rx -r ACME-SYSADMIN -r ACME-AUDITORS -f '/Customers/ACME' -u admin`
+
+6. Remove all permissions on folders for the ACME-SYSOPS group
 
     `./opswchmod.py --perm 0 -r ACME-SYSOPS -f '/Customers/ACME/Policies' -u admin`
 
