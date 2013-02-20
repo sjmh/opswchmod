@@ -62,18 +62,20 @@ Permission Syntax
 
 You can specify a combination of {L,R,W,X,E} or 0
 
-L   = LIST  
-R   = READ  
-W   = WRITE  
-X   = EXECUTE  
-E   = EDIT FOLDER PERMISSIONS  
-0   = DELETE ALL PERMISSIONS  
+Attribute | Permission              |
+----------|-------------------------|
+    L     | LIST                    |
+    R     | READ                    |
+    W     | WRITE                   |
+    X     | EXECUTE                 |
+    E     | EDIT FOLDER PERMISSIONS | 
+    0     | DELETE ALL PERMISSIONS  |
 
 Any permission, other than LIST and 0, will also apply LIST.  If you specify
 WRITE, this also applies READ, as well as LIST.
 
 0 is exclusive and should not be combined with any other permissions.  It will
-override any other permissions specified on the command line.  It's purpose is
+override any other permissions specified on the command line.  Its purpose is
 to provide a mechanism for removing permissions for a role from a folder.
 
 EXECUTE, EDIT FOLDER and WRITE can all be specified, but never apply 
