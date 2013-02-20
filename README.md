@@ -14,6 +14,7 @@ Command Syntax
 *Note: For details on the syntax of the --perm option, see the 'Permission
 Syntax' section*
 
+```
 usage: opswchmod.py [options]
 
 options:
@@ -31,31 +32,32 @@ options:
                         Your SA username
   -d, --debug           Set debugging to true
   --permhelp            Print help on permissions
+```
 
 ### Examples
 
 1. List all permissions for a folder
 
-    ./opswchmod.py --list -f '/Customers/ACME' -u admin
+    `./opswchmod.py --list -f '/Customers/ACME' -u admin`
 
 2. Set permissions on a folder for a user
 
-    ./opswchmod.py --perm wx -r johndoe -f '/Customers/ACME/Scripts' -u admin
+    `./opswchmod.py --perm wx -r johndoe -f '/Customers/ACME/Scripts' -u admin`
 
 3. Set permissions on a folder, recursively
 
-    ./opswchmod.py --perm wx -r johndoe -f '/Customers/ACME/Scripts' \ 
-    --recurse -u admin
+    `./opswchmod.py --perm wx -r johndoe -f '/Customers/ACME/Scripts' \ 
+    --recurse -u admin`
 
 4. Set permissions on a folder for all groups starting with 'ACME-SYS'
 
-    ./opswchmod.py --perm wxe -r ACME-SYS -f '/Customers/ACME/Policies' \
-    -u admin
+    `./opswchmod.py --perm wxe -r ACME-SYS -f '/Customers/ACME/Policies' \
+    -u admin`
 
 5. Remove all permissions on folders for the ACME-SYSOPS group
 
-    ./opswchmod.py --perm 0 -r ACME-SYSOPS -f '/Customers/ACME/Policies' \
-    -u admin
+    `./opswchmod.py --perm 0 -r ACME-SYSOPS -f '/Customers/ACME/Policies' \
+    -u admin`
 
 
 Permission Syntax
@@ -63,12 +65,12 @@ Permission Syntax
 
 You can specify a combination of {L,R,W,X,E} or 0
 
-L   = LIST
-R   = READ
-W   = WRITE
-X   = EXECUTE
-E   = EDIT FOLDER PERMISSIONS
-0   = DELETE ALL PERMISSIONS
+L   = LIST  
+R   = READ  
+W   = WRITE  
+X   = EXECUTE  
+E   = EDIT FOLDER PERMISSIONS  
+0   = DELETE ALL PERMISSIONS  
 
 Any permission, other than LIST and 0, will also apply LIST.  If you specify
 WRITE, this also applies READ, as well as LIST.
@@ -84,30 +86,30 @@ each other.
 
 1. Apply all permissions:
 
-    --perms wxe
+    `--perms wxe`
 
-This applies LIST, READ, WRITE, EXECUTE and EDIT.
+    This applies LIST, READ, WRITE, EXECUTE and EDIT.
 
 2. Apply LIST and READ:
     
-    --perms r
+    `--perms r`
 
-This applies LIST and READ.
+    This applies LIST and READ.
 
 3. Apply READ and EXECUTE:
 
-    --perms rx
+    `--perms rx`
 
-This applies LIST, READ and EXECUTE.
+    This applies LIST, READ and EXECUTE.
 
 4. Apply WRITE AND EXECUTE:
 
-    --perms wx
+    `--perms wx`
 
-This applies LIST, READ, WRITE and EXECUTE.
+    This applies LIST, READ, WRITE and EXECUTE.
 
 5. Delete all permissions:
 
-    --perms 0
+    `--perms 0`
 
-This will delete all permissions for the roles specified
+    This will delete all permissions for the roles specified
